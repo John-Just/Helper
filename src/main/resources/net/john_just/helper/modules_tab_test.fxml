@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1">
+
+    <TabPane prefWidth="800" prefHeight="600">
+        <tabs>
+            <Tab text="Автоматические выключатели">
+                <fx:include source="modules_tab.fxml"/>
+            </Tab>
+            <Tab text="АВДТ">
+            </Tab>
+
+            <Tab text="УЗИП">
+
+            </Tab>
+            <Tab text="Реле напряжения">
+            </Tab>
+        </tabs>
+    </TabPane>
+
+</AnchorPane>

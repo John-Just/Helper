@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox spacing="10.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="net.john_just.helper.AddWireDialogController">
+    <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+
+    <ComboBox fx:id="nameBox" promptText="Название" editable="true" />
+    <ComboBox fx:id="manufacturerBox" promptText="Производитель" editable="true" />
+    <TextField fx:id="priceField" promptText="Цена за метр" />
+    <TextField fx:id="lengthField" promptText="Длина, м" />
+    <ComboBox fx:id="statusBox" promptText="Наличие" />
+    <ComboBox fx:id="colorBox" promptText="Цвет" />
+    <ComboBox fx:id="sectionBox" promptText="Сечение" />
+    <TextField fx:id="descriptionField" promptText="Описание (необязательно)" />
+
+    <HBox spacing="10">
+        <Button text="Добавить" onAction="#onAdd" />
+        <Button text="Отмена" onAction="#onCancel" />
+    </HBox>
+</VBox>
+

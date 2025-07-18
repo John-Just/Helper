@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="net.john_just.helper.WireTabController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <VBox spacing="10" AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="10.0"
+          AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
+
+        <TableView fx:id="wireTable" prefHeight="350">
+            <columns>
+                <TableColumn fx:id="nameColumn" text="Название"/>
+                <TableColumn fx:id="manufacturerColumn" text="Производитель"/>
+                <TableColumn fx:id="colorColumn" text="Цвет"/>
+                <TableColumn fx:id="sectionColumn" text="Сечение (мм²)"/>
+                <TableColumn fx:id="lengthColumn" text="Количество (м)"/>
+                <TableColumn fx:id="priceColumn" text="Цена"/>
+                <TableColumn fx:id="statusColumn" text="Наличие"/>
+                <TableColumn fx:id="descriptionColumn" text="Примечания"/>
+            </columns>
+        </TableView>
+
+        <Button text="Добавить провод" onAction="#onAddWire"/>
+    </VBox>
+</AnchorPane>

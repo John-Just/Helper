@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns="http://javafx.com/javafx/17"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="net.john_just.helper.CircuitBreakerTabController"
+      spacing="10" alignment="TOP_CENTER">
+
+    <TableView fx:id="circuitBreakerTable" prefHeight="350">
+        <columns>
+            <TableColumn fx:id="nameColumn" text="Название"/>
+            <TableColumn fx:id="manufacturerColumn" text="Производитель"/>
+            <TableColumn fx:id="Column" text="Модель"/>
+            <TableColumn fx:id="sectionColumn" text="Характеристика)"/>
+            <TableColumn fx:id="priceColumn" text="Ток"/>
+            <TableColumn fx:id="poleCountColumn" text="Количество полюсов"/>
+            <TableColumn fx:id="statusColumn" text="Наличие"/>
+        </columns>
+    </TableView>
+
+    <Label text="Здесь будет список модульного оборудования"/>
+    <Button text="Добавить модуль" onAction="#onAddModule"/>
+</VBox>
