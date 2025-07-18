@@ -50,8 +50,6 @@ public class AddWireDialogController {
             nameBox.getItems().addAll(nameBox.getValue());
             manufacturerBox.getItems().addAll(manufacturerBox.getValue());
 
-            new Alert(Alert.AlertType.INFORMATION, "Провод успешно добавлен").show();
-
             ((Stage) nameBox.getScene().getWindow()).close();
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Ошибка при вводе данных: " + e.getMessage()).showAndWait();
