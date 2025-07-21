@@ -17,7 +17,7 @@ public class Wire extends Component {
 
     @Override
     public String getInfo() {
-        return color + " " + name + " " + crossSection.getValue() + " мм";
+        return color + " " + name + " " + crossSection.toString();
     }
 
     public WireColor getColor() {
