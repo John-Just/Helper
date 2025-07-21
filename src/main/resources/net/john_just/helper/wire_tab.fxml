@@ -26,5 +26,7 @@
         </TableView>
 
         <Button text="Добавить провод" onAction="#onAddWire"/>
+        <Button text="Удалить" onAction="#onDeleteWire" />
+
     </VBox>
 </AnchorPane>
