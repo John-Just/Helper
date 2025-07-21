@@ -5,7 +5,6 @@
 
 <TabPane xmlns="http://javafx.com/javafx/17.0.12"
          xmlns:fx="http://javafx.com/fxml/1"
-         fx:controller="net.john_just.helper.HelloController"
          prefWidth="800" prefHeight="600"
          fx:id="mainTabPane" tabClosingPolicy="UNAVAILABLE">
 
