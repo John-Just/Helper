@@ -34,6 +34,10 @@ public abstract class Component {
         return price;
     }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
     public StockStatus getStockStatus() {
         return stockStatus;
     }
