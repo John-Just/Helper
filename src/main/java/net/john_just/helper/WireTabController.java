@@ -15,8 +15,6 @@ import javafx.scene.control.TableView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import net.john_just.helper.enums.CrossSection;
-import net.john_just.helper.enums.StockStatus;
-import net.john_just.helper.enums.WireColor;
 
 import java.io.IOException;
 
@@ -33,14 +31,21 @@ public class WireTabController {
 
 
     private ObservableList<Wire> wires = FXCollections.observableArrayList();
+    private ObservableList<String> componentNames = FXCollections.observableArrayList();
+    private ObservableList<String> manufacturers = FXCollections.observableArrayList();
 
     @FXML
     public void initialize() {
         nameColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getName().toString()));
         manufacturerColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getManufacturer().getName()));
         colorColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getColor().toString()));
-        sectionColumn.setCellValueFactory(data -> new SimpleDoubleProperty(data.getValue().getCrossSection().getValue()).asObject());
-        priceColumn.setCellValueFactory(data -> new SimpleDoubleProperty(data.getValue().getPrice()).asObject());
+        sectionColumn.setCellValueFactory(data -> {
+            CrossSection section = data.getValue().getCrossSection();
+            return new SimpleDoubleProperty(section != null ? section.getValue(): 0.0).asObject();
+        });
+        priceColumn.setCellValueFactory(data -> {
+            return new SimpleDoubleProperty(data.getValue() != null ? data.getValue().getPrice() : 0).asObject();
+        });
         statusColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getStockStatus().toString()));
         lengthColumn.setCellValueFactory(data -> new SimpleIntegerProperty(data.getValue().getQuantity()).asObject());
         descriptionColumn.setCellValueFactory(data -> new SimpleStringProperty(data.getValue().getDescription()));
@@ -54,13 +59,21 @@ public class WireTabController {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("AddWireDialog.fxml"));
             Parent root = loader.load();
 
+            AddWireDialogController controller = loader.getController();
+
+            if (componentNames == null) componentNames = FXCollections.observableArrayList();
+            if (manufacturers == null) manufacturers = FXCollections.observableArrayList();
+
+            // Передача списков
+            controller.setComponentNames(componentNames);
+            controller.setManufacturers(manufacturers);
+
             Stage dialogStage = new Stage();
             dialogStage.setTitle("Добавить провод");
             dialogStage.initModality(Modality.APPLICATION_MODAL);
             dialogStage.setScene(new Scene(root));
             dialogStage.showAndWait();
 
-            AddWireDialogController controller = loader.getController();
             Wire newWire = controller.getResultWire();
 
             if (newWire != null) {
@@ -73,5 +86,19 @@ public class WireTabController {
             alert.showAndWait();
         }
     }
+    @FXML
+    public void onDeleteWire() {
+        Wire selectedWire = wireTable.getSelectionModel().getSelectedItem();
+        if (selectedWire != null) {
+            wires.remove(selectedWire);
+        } else {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Удаление провода");
+            alert.setHeaderText(null);
+            alert.setContentText("Сначала выберите провод для удаления.");
+            alert.showAndWait();
+        }
+    }
+
 
 }
